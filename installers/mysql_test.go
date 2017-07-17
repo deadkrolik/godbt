@@ -44,7 +44,7 @@ func TestGetImageQuery(t *testing.T) {
 		"a": contract.SortAsc,
 		"b": contract.SortDesc,
 	})
-	if !strings.Contains(query, " ORDER BY `a` ASC, `b` DESC") {
+	if !strings.Contains(query, " ORDER BY") || !strings.Contains(query, "`a` ASC") || !strings.Contains(query, "`b` DESC") {
 		t.Fatalf("query should contain ORDER BY statement, not `%s`", query)
 	}
 }
