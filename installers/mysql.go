@@ -54,6 +54,10 @@ func (m *Mysql) InstallImage(image contract.Image) error {
 	}
 
 	for _, row := range image {
+		if len(row.Data) == 0 {
+			continue
+		}
+
 		var values []interface{}
 		var keys []string
 		for k, v := range row.Data {
