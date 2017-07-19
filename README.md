@@ -15,27 +15,27 @@ $ go get -u github.com/deadkrolik/godbt
 package test
 
 import (
-	"github.com/deadkrolik/godbt"
-	"github.com/deadkrolik/godbt/contract"
+    "github.com/deadkrolik/godbt"
+    "github.com/deadkrolik/godbt/contract"
 )
 ```
 3. Create test object, shared for all test functions and configure mysql conection:
 
 ```go
 var (
-	tester *godbt.Tester
-	err    error
+    tester *godbt.Tester
+    err    error
 )
 
 func init() {
-	tester, err = godbt.GetTester(contract.InstallerConfig{
-		Type:        "mysql",
-		ConnString:  "user:password@/database?charset=utf8&parseTime=True&loc=Local",
-		ClearMethod: contract.ClearMethodTruncate,
-	})
-	if err != nil {
-		panic(err.Error())
-	}
+    tester, err = godbt.GetTester(contract.InstallerConfig{
+        Type:        "mysql",
+        ConnString:  "user:password@/database?charset=utf8&parseTime=True&loc=Local",
+        ClearMethod: contract.ClearMethodTruncate,
+    })
+    if err != nil {
+        panic(err.Error())
+    }
 }
 ```
 ## Loading images
@@ -45,24 +45,24 @@ Image - set of rows you can load from different sources.
 1. XML-file as a source:
 
 ```go
-    image, err := tester.GetImageManager().LoadImage("path/to/file.xml")
-	if err != nil {
-		//...
-	}
+image, err := tester.GetImageManager().LoadImage("path/to/file.xml")
+if err != nil {
+    //...
+}
 ```
 
 2. XML-formatted string as a source:
 
 ```go
-    image, err := tester.GetImageManager().LoadImage(`
-    <?xml version="1.0" ?>
-    <dataset>
-        <data id="1" k1="1" k2="2"/>
-        <data id="2" k1="2" k2="3"/>
-    </dataset>`)
-    if err != nil {
-        //...
-    }
+image, err := tester.GetImageManager().LoadImage(`
+<?xml version="1.0" ?>
+<dataset>
+    <data id="1" k1="1" k2="2"/>
+    <data id="2" k1="2" k2="3"/>
+</dataset>`)
+if err != nil {
+    //...
+}
 ```
 
 Root tag should be "dataset", "data" in example is a table name, "k1", "k2" - columns names.
@@ -87,12 +87,12 @@ If we have XML-file like that:
 ```
 
 The result Image will have k1="modified_value1", k2="value2", k3="---modified_value1---". So replacement
-function will be called if attribute value contains your string. It can be used to make a template (replace
+function will be called if attribute value contains your string. It can be used to deal with templates (replace
 "{CURRENT_DATE}" to real date, for example).
 
 ## Installing images
 
-1. Here is a code, that inserts dataset to real database (MySQL): 
+1. Here is a code, that inserts dataset to real database: 
 
 ```go
 err = tester.GetInstaller().InstallImage(image)
@@ -115,7 +115,7 @@ if err != nil {
     //...
 }
 
-//here is you test code
+//here is you app code
 
 err = installer.Rollback()
 if err != nil {
@@ -125,7 +125,7 @@ if err != nil {
 
 ## Checking test results
 
-1. After loading and installing image you should run your real code, that works with database.
+1. After loading and installing image you should run your real app code, that works with database.
  
 2. Then you can check if you database state correct and the same as you predefined state, that can be described as another Image.
 
