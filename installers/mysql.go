@@ -4,8 +4,9 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	"github.com/deadkrolik/godbt/contract"
 	"strings"
+
+	"github.com/deadkrolik/godbt/contract"
 	//need that
 	_ "github.com/go-sql-driver/mysql"
 )

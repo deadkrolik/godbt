@@ -2,9 +2,10 @@ package providers
 
 import (
 	"bytes"
-	"github.com/deadkrolik/godbt/contract"
 	"path/filepath"
 	"testing"
+
+	"github.com/deadkrolik/godbt/contract"
 )
 
 func TestSourceToString(t *testing.T) {

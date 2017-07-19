@@ -2,6 +2,7 @@ package godbt
 
 import (
 	"errors"
+
 	"github.com/deadkrolik/godbt/contract"
 	"github.com/deadkrolik/godbt/installers"
 )

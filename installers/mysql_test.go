@@ -1,9 +1,10 @@
 package installers
 
 import (
-	"github.com/deadkrolik/godbt/contract"
 	"strings"
 	"testing"
+
+	"github.com/deadkrolik/godbt/contract"
 )
 
 func TestGetImageQuery(t *testing.T) {

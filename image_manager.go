@@ -3,9 +3,10 @@ package godbt
 import (
 	"errors"
 	"fmt"
+	"strings"
+
 	"github.com/deadkrolik/godbt/contract"
 	"github.com/deadkrolik/godbt/providers"
-	"strings"
 )
 
 //ImageManager - manager for Image type

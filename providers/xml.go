@@ -4,11 +4,12 @@ import (
 	"bytes"
 	"encoding/xml"
 	"errors"
-	"github.com/deadkrolik/godbt/contract"
 	"io"
 	"io/ioutil"
 	"path/filepath"
 	"strings"
+
+	"github.com/deadkrolik/godbt/contract"
 )
 
 //XMLImageProvider - parser for XML-files
