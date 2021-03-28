@@ -24,6 +24,11 @@ func GetTester(config contract.InstallerConfig) (*Tester, error) {
 		if err != nil {
 			return nil, err
 		}
+	case "postgres":
+		installer, err = installers.GetInstallerPostgres(config)
+		if err != nil {
+			return nil, err
+		}
 	default:
 		return nil, errors.New("Unknown loader name: " + config.Type)
 	}
